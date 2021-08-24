@@ -1,0 +1,22 @@
+  categories:
+  - id: 1
+    name: Ev Aletleri
+    imgUrl: ""
+  - id: 2
+    name: Klasik Müzik
+    imgUrl: ""
+  - id: 3
+    name: Popüler
+    imgUrl: ""
+  - id: 4
+    name: Ninni
+    imgUrl: ""
+  - id: 5
+    name: Enstrüman
+    imgUrl: ""
+  - id: 6
+    name: Piyano
+    imgUrl: ""
+  - id: 7
+    name: Piş Piş
+    imgUrl: ""
