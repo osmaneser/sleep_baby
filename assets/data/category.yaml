@@ -1,4 +1,7 @@
   categories:
+  - id: 0
+    name: Tümü
+    imgUrl: ""
   - id: 1
     name: Ev Aletleri
     imgUrl: ""

@@ -33,13 +33,19 @@ dependencies:
   get_it: ^7.0.0
   audio_service: ^0.17.1
   just_audio: ^0.9.5
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   yaml: ^3.1.0
   flutter_launcher_icons: ^0.9.1
+  flutter_native_splash: ^1.2.1
 
+flutter_native_splash:
+  color: "#D95043"
+  image: "assets/logo/baby_sleep_512_512.png"
+  android: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -55,6 +61,8 @@ flutter:
   assets:
     - assets/logo/
     - assets/data/data_set.yaml
+    - assets/data/category.yaml
+    - assets/logo/w-house-logo-512x512.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

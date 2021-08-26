@@ -3,35 +3,35 @@
     id: 1
     name: Doğa Sesi
     categoryId: 1
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3"
   -
     id: 2
     name: Bebek Sesi
     categoryId: 2
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-6.mp3"
   -
     id: 3
     name: Doğa Sesi
     categoryId: 2
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-2.mp3"
   -
     id: 4
     name: Bebek Sesi
     categoryId: 2
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-3.mp3"
   -
     id: 5
     name: Doğa Sesi
     categoryId: 3
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-4.mp3"
   -
     id: 6
     name: Bebek Sesi
     categoryId: 3
-    imgUrl: "",
-    soundUrl: "https://osmaneser.com/baby_sleep/ses-1.mp3",
+    imgUrl: aa
+    voiceUrl: "https://osmaneser.com/baby_sleep/ses-5.mp3"

@@ -13,13 +13,19 @@ class CategoryHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children:
-            Provider.of<CategoryViewModel>(context, listen: false).listCategory.map((e) => categoryItem(id: e.id, name: e.name)).toList(),
-      ),
-    );
+        scrollDirection: Axis.horizontal,
+        child: Consumer<CategoryViewModel>(
+          builder: (context, vModel, child) {
+            if (vModel.listCategory.length == 0) {
+              return Text("Boş");
+            } else {
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: vModel.listCategory.map((e) => categoryItem(id: e.id, name: e.name)).toList(),
+              );
+            }
+          },
+        ));
   }
 
   Widget categoryItem({required int id, required String name}) {
@@ -36,8 +42,8 @@ class CategoryHorizontal extends StatelessWidget {
               child: CustomContentText(text: name),
               padding: EdgeInsets.all(SizeConstants.size8),
               decoration: BoxDecoration(
-                color: vModel.selectedCategoryId == id ? GlobalConstant.alternativeSoft : GlobalConstant.alternativeSoft.withOpacity(0.3),
-               // borderRadius: BorderRadius.circular(SizeConstants.size8),
+                color: vModel.selectedCategoryId == id ? GlobalConstant.alternativeLive : GlobalConstant.mainSoft.withOpacity(0.3),
+                // borderRadius: BorderRadius.circular(SizeConstants.size8),
               ),
             ),
           );

@@ -1,19 +1,23 @@
-
+import 'package:sleep_baby/core/init/locator.dart';
 import 'package:sleep_baby/core/models/base_view_model.dart';
+import 'package:sleep_baby/ui/repositories/main_repository.dart';
 import '../../models/res_category.dart';
 
 class CategoryViewModel extends BaseViewModel {
+  final repo = locator<MainRepository>();
   int selectedCategoryId = 0;
-  final listCategory = [
-    ResCategory(id: 0, name: "Tümü"),
-    ResCategory(id: 1, name: "Atatürk"),
-    ResCategory(id: 2, name: "Ottoman"),
-    ResCategory(id: 3, name: "Germany"),
-    ResCategory(id: 4, name: "Netherlands"),
-    ResCategory(id: 5, name: "Scotland"),
-    ResCategory(id: 6, name: "Orman"),
-    ResCategory(id: 7, name: "Spain"),
-  ];
+  List<ResCategory> listCategory = [];
+
+  CategoryViewModel() {
+    getCategories();
+  }
+
+  Future<void> getCategories() async {
+    state = BaseState.Busy;
+    final result = await repo.getCategories();
+    listCategory = result;
+    state = BaseState.Done;
+  }
 
   Future<void> changeCategory(int id) async {
     state = BaseState.Busy;

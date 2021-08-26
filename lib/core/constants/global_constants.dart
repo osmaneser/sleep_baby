@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 
 class GlobalConstant {
   
-  static Color mainBack = Color(0xff202426);
-  static Color mainSoft = Color(0xffF0F2BB);
-  static Color fontColorLive = Color(0xffF0F2BB);
-  static Color fontColorAlternative = Color(0xff590202);
-  static Color alternativeLive = Color(0xff9DA65D);
+  static Color mainBack = Color(0xff73586E);
+  static Color mainSoft = Color(0xffB0A4BF);
+  static Color fontColorLive = Color(0xffE7DFF2);
+  static Color fontColorAlternative = Color(0xffBF907E);
+  static Color alternativeLive = Color(0xffD95043);
   static Color alternativeSoft = Color(0xff9DA65D);
 
   static List<Locale> supportedLanguages = [Locale("tr", "TR"), Locale("en", "US")];

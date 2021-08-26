@@ -13,7 +13,7 @@ class AdUtil {
   static openRandomIntersititalAd() async {
     final mls = DateTime.now().microsecond;
 
-    if (mls % 19 == 0) {
+    if (mls % 12 == 0) {
       final inter = InterstitialAd(unitId: "ca-app-pub-9062473259976457/9324956253");
       await inter.load();
       if (inter.isLoaded) {
