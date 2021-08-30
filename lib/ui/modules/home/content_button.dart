@@ -4,6 +4,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_baby/ui/models/res_voice.dart';
 import 'package:sleep_baby/ui/modules/home/home_view_model.dart';
+import 'package:sleep_baby/ui/services/ad_utils.dart';
 import 'package:sleep_baby/ui/widgets/custom_play_button.dart';
 
 class ContentButton extends StatefulWidget {
@@ -14,7 +15,6 @@ class ContentButton extends StatefulWidget {
 }
 
 class _ContentButtonState extends State<ContentButton> {
-  int selectedVoiceId = 0;
   List<ResVoice> listVoice = [];
 
   @override
@@ -47,14 +47,14 @@ class _ContentButtonState extends State<ContentButton> {
           return Text("Boş");
         } else {
           return Column(
-            children: [getItem(vModel.listVoice.take(3).toList()), getItem(vModel.listVoice.skip(3).take(3).toList())],
+            children: [getItem(vModel.listVoice.take(3).toList(), vModel), getItem(vModel.listVoice.skip(3).take(3).toList(), vModel)],
           );
         }
       },
     );
   }
 
-  Widget getItem(List<ResVoice> listVoice) {
+  Widget getItem(List<ResVoice> listVoice, HomeViewModel vModel) {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,14 +65,15 @@ class _ContentButtonState extends State<ContentButton> {
                   child: CustomPlayButton(
                       name: e.name,
                       iconUrl: "",
-                      isPlaying: e.id == selectedVoiceId,
+                      isPlaying: e.id == vModel.selectedVoiceId,
                       id: e.id,
                       onPlay: (int val) async {
-                        if (selectedVoiceId == val) {
-                          selectedVoiceId = 0;
+                        if (vModel.selectedVoiceId == val) {
+                          vModel.voiceStop();
                           AudioService.stop();
+                          AdUtil.openRandomIntersititalAd();
                         } else {
-                          selectedVoiceId = val;
+                          vModel.changeVoice(val);
                           await AudioService.stop();
                           AudioService.start(backgroundTaskEntrypoint: _backgroundEntrypoint, params: {"url": e.voiceUrl});
                         }
@@ -97,11 +98,16 @@ class AudioPlayerTask extends BackgroundAudioTask {
     var urlKey = params?.keys.firstWhere((k) => k == 'url', orElse: () => "");
 
     if (urlKey != null && urlKey.isNotEmpty && params?[urlKey] != "") {
+      // final mediaItem = MediaItem(id: params?[urlKey], album: "", title: "");
+
+      // AudioServiceBackground.setMediaItem(mediaItem);
+
       AudioServiceBackground.setState(
         controls: [MediaControl.pause, MediaControl.stop],
         playing: true,
         processingState: AudioProcessingState.connecting,
       );
+
       await _audioPlay.setUrl(params?[urlKey]);
       _audioPlay.play();
       return super.onStart(params);
@@ -114,7 +120,7 @@ class AudioPlayerTask extends BackgroundAudioTask {
   Future<void> onStop() async {
     AudioServiceBackground.setState(
       controls: [MediaControl.play],
-      playing: true,
+      playing: false,
       processingState: AudioProcessingState.connecting,
     );
     await _audioPlay.stop();

@@ -17,7 +17,7 @@ class CustomPlayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        AdUtil.openRandomIntersititalAd();
+        //AdUtil.openRandomIntersititalAd();
         onPlay(id);
       },
       child: Container(

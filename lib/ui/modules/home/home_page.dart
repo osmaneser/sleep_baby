@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                           AdUtil.openIntersititalAd();
                         },
                         child: Image.asset(
-                          "assets/logo/baby_sleep_512_512.png",
+                          "assets/logo/w-house-logo-512x512.png",
                         ),
                       ),
                     ),

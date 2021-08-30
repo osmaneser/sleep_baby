@@ -1,6 +1,5 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_baby/ui/modules/category/category_view_model.dart';
@@ -10,14 +9,17 @@ import 'core/init/locator.dart';
 import 'ui/modules/home/home_page.dart';
 import 'ui/modules/home/home_view_model.dart';
 
+
 void main() async {
   setupLocator();
 
   WidgetsFlutterBinding.ensureInitialized();
+  //tz.initializeTimeZones();
 
-  SystemChrome.setEnabledSystemUIOverlays([]);
+  //NotificationService().initNotification();
+
+  //SystemChrome.setEnabledSystemUIOverlays([]);
   await MobileAds.initialize();
-  // This is my device id. Ad yours here
 
   runApp(
     MultiProvider(
@@ -28,7 +30,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (context) => HomeViewModel(),
         ),
-         ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (context) => CategoryViewModel(),
         ),
       ],
